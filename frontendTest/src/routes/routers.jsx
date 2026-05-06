@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Dashboard from '../components/Dashboard'
-import Student from '../components/Student'
+import Students from '../components/Students'
+import StudentPage from '../components/StudentPage'
 import NotFound from '../components/NotFound'
 
 function Settings() {
@@ -16,8 +17,8 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="/students" element={<Dashboard />} />
-      <Route path="/student" element={<Student />} />
+      <Route path="/students" element={<Students />} />
+      <Route path="/student/:id" element={<StudentPage />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
