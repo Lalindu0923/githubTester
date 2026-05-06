@@ -1,0 +1,94 @@
+.student-card {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.student-name {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #0f172a;
+}
+
+.student-meta {
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.student-details {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.marks-table {
+  border-collapse: collapse;
+  width: 320px;
+}
+
+.marks-table th,
+.marks-table td {
+  border: 1px solid #e6eef8;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.marks-table th,
+.marks-table td {
+  border: 1px solid #e6eef8;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.marks-table thead th {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.chart-wrap {
+  flex: 1;
+}
+
+.student-analysis {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px dashed #e6eef8;
+}
+
+.analysis-note {
+  color: #475569;
+  margin: 0 0 8px 0;
+}
+
+.student-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-label {
+  font-size: 12px;
+  fill: #0f172a;
+}
+
+.chart-value {
+  font-size: 12px;
+  fill: #0f172a;
+  font-weight: 600;
+}
+
+.axis-label {
+  font-size: 11px;
+  fill: #64748b;
+}
