@@ -3,6 +3,7 @@ import Dashboard from '../components/Dashboard'
 import Students from '../components/Students'
 import StudentPage from '../components/StudentPage'
 import NotFound from '../components/NotFound'
+import TeacherProfile from '../components/TeacherProfile'
 
 function Settings() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
       <Route path="/" element={<Dashboard />} />
       <Route path="/students" element={<Students />} />
       <Route path="/student/:id" element={<StudentPage />} />
+      <Route path="/profile" element={<TeacherProfile />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

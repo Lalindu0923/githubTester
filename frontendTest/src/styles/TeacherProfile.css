@@ -1,0 +1,99 @@
+.teacher-profile {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 20px;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.profile-header-card,
+.profile-section-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-header-card h1,
+.profile-section-card h2 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.profile-subtitle {
+  margin: 0.5rem 0 1.25rem;
+  color: #6b7b8a;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.profile-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.profile-grid p {
+  margin: 0;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.timetable-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.timetable-table thead {
+  background: #ecf3ff;
+}
+
+.timetable-table th,
+.timetable-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5ebf0;
+}
+
+.timetable-table th {
+  color: #2c3e50;
+}
+
+.timetable-table td {
+  color: #34495e;
+}
+
+.work-list {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+  color: #34495e;
+}
+
+.work-list li {
+  margin-bottom: 0.6rem;
+}
+
+@media (max-width: 768px) {
+  .teacher-profile {
+    padding: 1rem 15px;
+  }
+
+  .profile-header-card,
+  .profile-section-card {
+    padding: 1rem;
+  }
+
+  .timetable-table th,
+  .timetable-table td {
+    padding: 0.55rem;
+    font-size: 0.92rem;
+  }
+}
