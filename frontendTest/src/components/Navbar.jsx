@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import '../styles/Navbar.css'
 
 function Navbar() {
@@ -10,24 +10,24 @@ function Navbar() {
         </Link>
         <ul className="nav-menu">
           <li className="nav-item">
-            <Link to="/" className="nav-link">
+            <NavLink to="/" end className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}>
               Dashboard
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/students" className="nav-link">
+            <NavLink to="/students" className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}>
               Students
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/profile" className="nav-link">
+            <NavLink to="/profile" className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}>
               Profile
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/settings" className="nav-link">
+            <NavLink to="/settings" className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}>
               Settings
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
