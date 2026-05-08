@@ -2,6 +2,10 @@ import { Link, NavLink } from 'react-router-dom'
 import '../styles/Navbar.css'
 
 function Navbar() {
+  const handleLogout = () => {
+    alert('Logged out successfully')
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -30,6 +34,9 @@ function Navbar() {
             </NavLink>
           </li>
         </ul>
+        <button onClick={handleLogout} className="logout-btn">
+          Logout
+        </button>
       </div>
     </nav>
   )
