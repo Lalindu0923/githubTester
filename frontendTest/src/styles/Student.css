@@ -88,6 +88,13 @@
   cursor: pointer;
   font-size: 0.85rem;
 }
+.parent-panel {
+  background: #f8fafc;
+  padding: 8px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  border: 1px solid #e6eef8;
+}
 .chart-label {
   font-size: 12px;
   fill: #0f172a;
