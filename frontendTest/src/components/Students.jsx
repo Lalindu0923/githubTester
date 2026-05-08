@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Student.css'
-import ParentModal from './ParentModal'
 
 const sampleStudents = [
   {
@@ -47,7 +46,6 @@ const sampleStudents = [
 ]
 
 export default function Students() {
-  const [modalStudent, setModalStudent] = useState(null)
 
   return (
     <div style={{ maxWidth: 1000, margin: '20px auto' }}>
@@ -58,19 +56,13 @@ export default function Students() {
             <header className="student-header">
               <h3 className="student-name" style={{ margin: 0 }}>{s.name}</h3>
               <div className="student-meta">Grade: {s.grade}</div>
-              <div className="student-meta">
-                <button className="msg-btn" onClick={() => setModalStudent(s)}>
-                  Show Parent
-                </button>
-              </div>
+              <div className="student-meta">Grade: {s.grade}</div>
             </header>
             <div style={{ paddingTop: 8 }}>
               <Link to={`/student/${s.id}`} className="nav-link" style={{ color: '#4f46e5' }}>
                 View profile
               </Link>
-              {modalStudent && modalStudent.id === s.id && (
-                <ParentModal student={modalStudent} onClose={() => setModalStudent(null)} />
-              )}
+              
             </div>
           </div>
         ))}
