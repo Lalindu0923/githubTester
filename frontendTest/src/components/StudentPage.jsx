@@ -19,6 +19,8 @@ const studentsData = {
     parentContact: '+94-71-123-4567',
     parentWhatsApp: '+94711234567',
     parentEmail: 'kamal.parent@example.com'
+    ,
+    rating: 5
   },
   2: {
     id: 2,
@@ -35,6 +37,8 @@ const studentsData = {
     parentContact: '+94-77-234-5678',
     parentWhatsApp: '+94772345678',
     parentEmail: 'saman.parent@example.com'
+    ,
+    rating: 4
   },
   3: {
     id: 3,
@@ -51,6 +55,8 @@ const studentsData = {
     parentContact: '+94-72-345-6789',
     parentWhatsApp: '+94723456789',
     parentEmail: 'nimasha.parent@example.com'
+    ,
+    rating: 5
   },
   4: {
     id: 4,
@@ -67,6 +73,8 @@ const studentsData = {
     parentContact: '+94-70-456-7890',
     parentWhatsApp: '+94704567890',
     parentEmail: 'tharindu.parent@example.com'
+    ,
+    rating: 2
   },
   5: {
     id: 5,
@@ -83,6 +91,8 @@ const studentsData = {
     parentContact: '+94-75-567-8901',
     parentWhatsApp: '+94755678901',
     parentEmail: 'sethmi.parent@example.com'
+    ,
+    rating: 1
   }
 }
 

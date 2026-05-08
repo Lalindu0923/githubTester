@@ -165,3 +165,7 @@
   font-size: 11px;
   fill: #64748b;
 }
+
+.student-review { margin-top: 8px; }
+.star { font-size: 1.05rem; color: #cbd5e1; margin-right: 4px }
+.star.filled { color: #f59e0b }

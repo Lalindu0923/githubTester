@@ -10,6 +10,7 @@ const sampleStudents = [
     parentContact: '+94-71-123-4567',
     parentWhatsApp: '+94711234567',
     parentEmail: 'kamal.parent@example.com'
+    ,rating: 5
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const sampleStudents = [
     parentContact: '+94-77-234-5678',
     parentWhatsApp: '+94772345678',
     parentEmail: 'saman.parent@example.com'
+    ,rating: 4
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ const sampleStudents = [
     parentContact: '+94-72-345-6789',
     parentWhatsApp: '+94723456789',
     parentEmail: 'nimasha.parent@example.com'
+    ,rating: 5
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const sampleStudents = [
     parentContact: '+94-70-456-7890',
     parentWhatsApp: '+94704567890',
     parentEmail: 'tharindu.parent@example.com'
+    ,rating: 2
   },
   {
     id: 5,
@@ -42,6 +46,7 @@ const sampleStudents = [
     parentContact: '+94-75-567-8901',
     parentWhatsApp: '+94755678901',
     parentEmail: 'sethmi.parent@example.com'
+    ,rating: 1
   }
 ]
 
@@ -55,7 +60,6 @@ export default function Students() {
           <div key={s.id} className="student-card" style={{ width: 420 }}>
             <header className="student-header">
               <h3 className="student-name" style={{ margin: 0 }}>{s.name}</h3>
-              <div className="student-meta">Grade: {s.grade}</div>
               <div className="student-meta">Grade: {s.grade}</div>
             </header>
             <div style={{ paddingTop: 8 }}>

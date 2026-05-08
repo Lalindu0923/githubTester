@@ -59,6 +59,18 @@ function SimpleBarChart({ data, width = 600, height = 300, labelKey = 'value' })
 export default function Student({ student = sampleStudent }) {
   const [showParentModal, setShowParentModal] = useState(false)
   // compute per-subject totals and averages
+  const renderStars = (rating = 0) => {
+    const max = 5
+    const stars = []
+    for (let i = 1; i <= max; i++) {
+      stars.push(
+        <span key={i} className={i <= rating ? 'star filled' : 'star'}>
+          {i <= rating ? '★' : '☆'}
+        </span>
+      )
+    }
+    return <div className="student-review">{stars}</div>
+  }
   const subjectsWithTotals = student.subjects.map((s) => {
     const t1 = Number(s.marks.term1 || 0);
     const t2 = Number(s.marks.term2 || 0);
@@ -103,6 +115,7 @@ export default function Student({ student = sampleStudent }) {
         {showParentModal && (
           <ParentModal student={student} onClose={() => setShowParentModal(false)} />
         )}
+        {renderStars(student.rating)}
       </header>
 
       <section className="student-details">
