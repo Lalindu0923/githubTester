@@ -18,7 +18,7 @@ export default function Students() {
 
       <div className="grade-sections">
         {studentsByGrade.map(({ grade, students }) => (
-          <section key={grade} className="grade-section">
+          <section key={grade} className={`grade-section grade-section-${grade}`}>
             <div className="grade-section-header">
               <h3>Grade {grade}</h3>
               <span>{students.length} students</span>
@@ -26,7 +26,7 @@ export default function Students() {
             {students.length > 0 ? (
               <div className="grade-grid">
                 {students.map((s) => (
-                  <div key={s.id} className="student-card student-card-compact">
+                  <div key={s.id} className={`student-card student-card-compact grade-card grade-card-${grade}`}>
                     <header className="student-header">
                       <div>
                         <h4 className="student-name student-name-compact">{s.name}</h4>
