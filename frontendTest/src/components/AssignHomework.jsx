@@ -32,6 +32,7 @@ export default function AssignHomework() {
     dueDate: '',
     priority: 'normal'
   })
+  const [attachment, setAttachment] = useState(null)
 
   const [assignedHomework, setAssignedHomework] = useState([])
 
@@ -45,6 +46,11 @@ export default function AssignHomework() {
     }))
   }
 
+  const handleFileChange = (event) => {
+    const file = event.target.files?.[0] || null
+    setAttachment(file)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     
@@ -56,6 +62,8 @@ export default function AssignHomework() {
     const newHomework = {
       id: Date.now(),
       ...formData,
+      attachmentName: attachment ? attachment.name : '',
+      attachmentType: attachment ? attachment.type : '',
       groupName: selectedGroupData.name,
       assignedDate: new Date().toLocaleDateString(),
       studentCount: selectedGroupData.students.length
@@ -71,6 +79,9 @@ export default function AssignHomework() {
       dueDate: '',
       priority: 'normal'
     })
+    setAttachment(null)
+
+    event.target.reset()
 
     alert('Homework assigned successfully!')
   }
@@ -167,6 +178,25 @@ export default function AssignHomework() {
             </div>
           </div>
 
+          <div className="form-group">
+            <label htmlFor="attachment">Attachment</label>
+            <input
+              id="attachment"
+              type="file"
+              name="attachment"
+              accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+              onChange={handleFileChange}
+            />
+            <small className="field-hint">
+              Optional: upload a PDF or any document/image to support the homework.
+            </small>
+            {attachment && (
+              <div className="file-preview">
+                Selected file: <strong>{attachment.name}</strong>
+              </div>
+            )}
+          </div>
+
           <button type="submit" className="submit-btn">
             Assign Homework
           </button>
@@ -198,6 +228,12 @@ export default function AssignHomework() {
                 </div>
                 <p className="homework-subject">{hw.subject}</p>
                 <p className="homework-description">{hw.description}</p>
+                {hw.attachmentName && (
+                  <div className="homework-attachment">
+                    <span className="meta-label">Attachment:</span>
+                    <span>{hw.attachmentName}</span>
+                  </div>
+                )}
                 <div className="homework-meta">
                   <div>
                     <span className="meta-label">Group:</span>

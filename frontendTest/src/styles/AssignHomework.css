@@ -56,6 +56,11 @@
   background: #fafbfc;
 }
 
+.form-group input[type='file'] {
+  padding: 0.5rem;
+  background: #ffffff;
+}
+
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -63,6 +68,17 @@
   border-color: #0f4c81;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.1);
+}
+
+.field-hint {
+  color: #667482;
+  font-size: 0.85rem;
+}
+
+.file-preview {
+  margin-top: 0.35rem;
+  color: #0f4c81;
+  font-size: 0.9rem;
 }
 
 .form-row {
@@ -194,6 +210,14 @@
   margin: 0.6rem 0;
   color: #34495e;
   line-height: 1.5;
+}
+
+.homework-attachment {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.4rem;
+  color: #34495e;
 }
 
 .homework-meta {
