@@ -28,6 +28,8 @@ const works = [
 ]
 
 export default function TeacherProfile() {
+  const [showLeaveForm, setShowLeaveForm] = useState(false)
+
   const [leaveForm, setLeaveForm] = useState({
     startDate: '',
     endDate: '',
@@ -148,62 +150,72 @@ export default function TeacherProfile() {
       </section>
 
       <section className="profile-section-card">
-        <h2>Request Leave / Holiday</h2>
-        <form onSubmit={handleSubmitLeave} className="leave-form">
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="startDate">Start Date *</label>
-              <input
-                id="startDate"
-                type="date"
-                name="startDate"
-                value={leaveForm.startDate}
-                onChange={handleLeaveInputChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="endDate">End Date *</label>
-              <input
-                id="endDate"
-                type="date"
-                name="endDate"
-                value={leaveForm.endDate}
-                onChange={handleLeaveInputChange}
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="leaveType">Leave Type *</label>
-            <select
-              id="leaveType"
-              name="leaveType"
-              value={leaveForm.leaveType}
-              onChange={handleLeaveInputChange}
-            >
-              <option value="annual">Annual Leave</option>
-              <option value="sick">Sick Leave</option>
-              <option value="holiday">Public Holiday</option>
-              <option value="personal">Personal Leave</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="reason">Reason for Leave *</label>
-            <textarea
-              id="reason"
-              name="reason"
-              placeholder="Provide reason for your leave request..."
-              rows="3"
-              value={leaveForm.reason}
-              onChange={handleLeaveInputChange}
-            />
-          </div>
-
-          <button type="submit" className="submit-leave-btn">
-            Submit Leave Request
+        <div className="section-header-with-btn">
+          <h2>Request Leave / Holiday</h2>
+          <button
+            onClick={() => setShowLeaveForm(!showLeaveForm)}
+            className="toggle-form-btn"
+          >
+            {showLeaveForm ? 'Hide Form' : 'Request Leave'}
           </button>
-        </form>
+        </div>
+
+        {showLeaveForm && (
+          <form onSubmit={handleSubmitLeave} className="leave-form">
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="startDate">Start Date *</label>
+                <input
+                  id="startDate"
+                  type="date"
+                  name="startDate"
+                  value={leaveForm.startDate}
+                  onChange={handleLeaveInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="endDate">End Date *</label>
+                <input
+                  id="endDate"
+                  type="date"
+                  name="endDate"
+                  value={leaveForm.endDate}
+                  onChange={handleLeaveInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="leaveType">Leave Type *</label>
+              <select
+                id="leaveType"
+                name="leaveType"
+                value={leaveForm.leaveType}
+                onChange={handleLeaveInputChange}
+              >
+                <option value="annual">Annual Leave</option>
+                <option value="sick">Sick Leave</option>
+                <option value="personal">Personal Leave</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="reason">Reason for Leave *</label>
+              <textarea
+                id="reason"
+                name="reason"
+                placeholder="Provide reason for your leave request..."
+                rows="3"
+                value={leaveForm.reason}
+                onChange={handleLeaveInputChange}
+              />
+            </div>
+
+            <button type="submit" className="submit-leave-btn">
+              Submit Leave Request
+            </button>
+          </form>
+        )}
       </section>
 
       {leaveRequests.length > 0 && (

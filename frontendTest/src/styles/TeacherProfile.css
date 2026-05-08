@@ -81,6 +81,35 @@
   margin-bottom: 0.6rem;
 }
 
+.section-header-with-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-header-with-btn h2 {
+  margin: 0;
+}
+
+.toggle-form-btn {
+  background: #0f4c81;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.toggle-form-btn:hover {
+  background: #0a3557;
+}
+
 .leave-form {
   display: grid;
   gap: 1rem;
@@ -244,5 +273,14 @@
 
   .request-header {
     flex-direction: column;
+  }
+
+  .section-header-with-btn {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggle-form-btn {
+    width: 100%;
   }
 }
