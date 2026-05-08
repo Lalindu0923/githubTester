@@ -6,31 +6,44 @@ const sampleStudents = [
   {
     id: 1,
     name: 'Kamal Perera',
-    grade: '10'
+    grade: '10',
+    parentContact: '+94-71-123-4567'
   },
   {
     id: 2,
     name: 'Saman Silva',
-    grade: '10'
+    grade: '10',
+    parentContact: '+94-77-234-5678'
   },
   {
     id: 3,
     name: 'Nimasha Jayawardena',
-    grade: '11'
+    grade: '11',
+    parentContact: '+94-72-345-6789'
   },
   {
     id: 4,
     name: 'Tharindu Wickramasinghe',
-    grade: '11'
+    grade: '11',
+    parentContact: '+94-70-456-7890'
   },
   {
     id: 5,
     name: 'Sethmi Ranasinghe',
-    grade: '11'
+    grade: '11',
+    parentContact: '+94-75-567-8901'
   }
 ]
 
 export default function Students() {
+  const sendMessage = (student) => {
+    const msg = window.prompt(`Enter message to send to ${student.name}'s parent (${student.parentContact}):`)
+    if (msg && msg.trim()) {
+      // Simulate sending message — in real app call API
+      alert(`Message sent to ${student.parentContact}:\n\n"${msg}"`)
+    }
+  }
+
   return (
     <div style={{ maxWidth: 1000, margin: '20px auto' }}>
       <h2 style={{ marginBottom: 12 }}>Students</h2>
@@ -40,11 +53,15 @@ export default function Students() {
             <header className="student-header">
               <h3 className="student-name" style={{ margin: 0 }}>{s.name}</h3>
               <div className="student-meta">Grade: {s.grade}</div>
+              <div className="student-meta">Parent: <a href={`tel:${s.parentContact}`}>{s.parentContact}</a></div>
             </header>
             <div style={{ paddingTop: 8 }}>
               <Link to={`/student/${s.id}`} className="nav-link" style={{ color: '#4f46e5' }}>
                 View profile
               </Link>
+              <button className="msg-btn" style={{ marginLeft: 12 }} onClick={() => sendMessage(s)}>
+                Message Parent
+              </button>
             </div>
           </div>
         ))}

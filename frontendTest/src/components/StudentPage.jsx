@@ -27,6 +27,8 @@ const studentsData = {
       { name: 'History', marks: { term1: 71, term2: 68, term3: 73 } },
       { name: 'Computer', marks: { term1: 91, term2: 90, term3: 93 } }
     ]
+    ,
+    parentContact: '+94-77-234-5678'
   },
   3: {
     id: 3,

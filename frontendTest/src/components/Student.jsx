@@ -8,6 +8,7 @@ const sampleStudent = {
   id: 1,
   name: "Kamal Perera",
   grade: "10",
+  parentContact: '+94-71-123-4567',
   subjects: [
     { name: "Mathematics", marks: { term1: 88, term2: 82, term3: 90 } },
     { name: "Science", marks: { term1: 76, term2: 80, term3: 79 } },
@@ -90,6 +91,12 @@ export default function Student({ student = sampleStudent }) {
       <header className="student-header">
         <h2 className="student-name">{student.name}</h2>
         <div className="student-meta">Grade: {student.grade}</div>
+        {student.parentContact && (
+          <div className="student-meta">Parent: <a href={`tel:${student.parentContact}`}>{student.parentContact}</a> <button className="msg-btn" onClick={() => {
+            const m = window.prompt(`Message to ${student.name}\'s parent (${student.parentContact}):`)
+            if (m && m.trim()) alert(`Message sent to ${student.parentContact}:\\n\\n"${m}"`)
+          }}>Message Parent</button></div>
+        )}
       </header>
 
       <section className="student-details">
