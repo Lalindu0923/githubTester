@@ -4,15 +4,7 @@ import Students from '../components/Students'
 import StudentPage from '../components/StudentPage'
 import NotFound from '../components/NotFound'
 import TeacherProfile from '../components/TeacherProfile'
-
-function Settings() {
-  return (
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>Settings</h1>
-      <p>Settings page coming soon...</p>
-    </div>
-  )
-}
+import Settings from '../components/Settings'
 
 function AppRoutes() {
   return (
