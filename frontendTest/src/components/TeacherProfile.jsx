@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import '../styles/TeacherProfile.css'
 
 const teacherProfile = {
@@ -27,6 +28,59 @@ const works = [
 ]
 
 export default function TeacherProfile() {
+  const [leaveForm, setLeaveForm] = useState({
+    startDate: '',
+    endDate: '',
+    leaveType: 'annual',
+    reason: ''
+  })
+
+  const [leaveRequests, setLeaveRequests] = useState([
+    {
+      id: 1,
+      startDate: '2026-05-15',
+      endDate: '2026-05-17',
+      leaveType: 'annual',
+      reason: 'Personal vacation',
+      status: 'approved',
+      submittedDate: '2026-04-28'
+    }
+  ])
+
+  const handleLeaveInputChange = (event) => {
+    const { name, value } = event.target
+    setLeaveForm((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmitLeave = (event) => {
+    event.preventDefault()
+
+    if (!leaveForm.startDate || !leaveForm.endDate || !leaveForm.reason) {
+      alert('Please fill in all required fields')
+      return
+    }
+
+    const newRequest = {
+      id: Date.now(),
+      ...leaveForm,
+      status: 'pending',
+      submittedDate: new Date().toISOString().split('T')[0]
+    }
+
+    setLeaveRequests((prev) => [newRequest, ...prev])
+    setLeaveForm({
+      startDate: '',
+      endDate: '',
+      leaveType: 'annual',
+      reason: ''
+    })
+
+    alert('Leave request submitted successfully!')
+  }
+
   return (
     <div className="teacher-profile">
       <section className="profile-header-card">
@@ -92,6 +146,92 @@ export default function TeacherProfile() {
           ))}
         </ul>
       </section>
+
+      <section className="profile-section-card">
+        <h2>Request Leave / Holiday</h2>
+        <form onSubmit={handleSubmitLeave} className="leave-form">
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="startDate">Start Date *</label>
+              <input
+                id="startDate"
+                type="date"
+                name="startDate"
+                value={leaveForm.startDate}
+                onChange={handleLeaveInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="endDate">End Date *</label>
+              <input
+                id="endDate"
+                type="date"
+                name="endDate"
+                value={leaveForm.endDate}
+                onChange={handleLeaveInputChange}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="leaveType">Leave Type *</label>
+            <select
+              id="leaveType"
+              name="leaveType"
+              value={leaveForm.leaveType}
+              onChange={handleLeaveInputChange}
+            >
+              <option value="annual">Annual Leave</option>
+              <option value="sick">Sick Leave</option>
+              <option value="holiday">Public Holiday</option>
+              <option value="personal">Personal Leave</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="reason">Reason for Leave *</label>
+            <textarea
+              id="reason"
+              name="reason"
+              placeholder="Provide reason for your leave request..."
+              rows="3"
+              value={leaveForm.reason}
+              onChange={handleLeaveInputChange}
+            />
+          </div>
+
+          <button type="submit" className="submit-leave-btn">
+            Submit Leave Request
+          </button>
+        </form>
+      </section>
+
+      {leaveRequests.length > 0 && (
+        <section className="profile-section-card">
+          <h2>Leave Request History</h2>
+          <div className="leave-requests-list">
+            {leaveRequests.map((request) => (
+              <div key={request.id} className={`leave-request-card status-${request.status}`}>
+                <div className="request-header">
+                  <div>
+                    <h4>{request.leaveType.charAt(0).toUpperCase() + request.leaveType.slice(1)}</h4>
+                    <p className="request-dates">
+                      {request.startDate} to {request.endDate}
+                    </p>
+                  </div>
+                  <span className={`status-badge status-${request.status}`}>
+                    {request.status.toUpperCase()}
+                  </span>
+                </div>
+                <p className="request-reason">{request.reason}</p>
+                <div className="request-meta">
+                  <span>Submitted: {request.submittedDate}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }
