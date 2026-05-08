@@ -1,74 +1,52 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { gradeOrder, sampleStudents } from '../data/studentsData'
 import '../styles/Student.css'
 
-const sampleStudents = [
-  {
-    id: 1,
-    name: 'Kamal Perera',
-    grade: '10',
-    parentContact: '+94-71-123-4567',
-    parentWhatsApp: '+94711234567',
-    parentEmail: 'kamal.parent@example.com'
-    ,rating: 5
-  },
-  {
-    id: 2,
-    name: 'Saman Silva',
-    grade: '10',
-    parentContact: '+94-77-234-5678',
-    parentWhatsApp: '+94772345678',
-    parentEmail: 'saman.parent@example.com'
-    ,rating: 4
-  },
-  {
-    id: 3,
-    name: 'Nimasha Jayawardena',
-    grade: '11',
-    parentContact: '+94-72-345-6789',
-    parentWhatsApp: '+94723456789',
-    parentEmail: 'nimasha.parent@example.com'
-    ,rating: 5
-  },
-  {
-    id: 4,
-    name: 'Tharindu Wickramasinghe',
-    grade: '11',
-    parentContact: '+94-70-456-7890',
-    parentWhatsApp: '+94704567890',
-    parentEmail: 'tharindu.parent@example.com'
-    ,rating: 2
-  },
-  {
-    id: 5,
-    name: 'Sethmi Ranasinghe',
-    grade: '11',
-    parentContact: '+94-75-567-8901',
-    parentWhatsApp: '+94755678901',
-    parentEmail: 'sethmi.parent@example.com'
-    ,rating: 1
-  }
-]
-
 export default function Students() {
+  const studentsByGrade = gradeOrder.map((grade) => ({
+    grade,
+    students: sampleStudents.filter((student) => student.grade === grade)
+  }))
 
   return (
-    <div style={{ maxWidth: 1000, margin: '20px auto' }}>
-      <h2 style={{ marginBottom: 12 }}>Students</h2>
-      <div className="students-grid">
-        {sampleStudents.map((s) => (
-          <div key={s.id} className="student-card" style={{ width: 420 }}>
-            <header className="student-header">
-              <h3 className="student-name" style={{ margin: 0 }}>{s.name}</h3>
-              <div className="student-meta">Grade: {s.grade}</div>
-            </header>
-            <div style={{ paddingTop: 8 }}>
-              <Link to={`/student/${s.id}`} className="nav-link" style={{ color: '#4f46e5' }}>
-                View profile
-              </Link>
-              
+    <div className="students-page">
+      <header className="students-page-header">
+        <h2>Students</h2>
+        <p>Grouped by grade in a structured row and column layout.</p>
+      </header>
+
+      <div className="grade-sections">
+        {studentsByGrade.map(({ grade, students }) => (
+          <section key={grade} className="grade-section">
+            <div className="grade-section-header">
+              <h3>Grade {grade}</h3>
+              <span>{students.length} students</span>
             </div>
-          </div>
+            {students.length > 0 ? (
+              <div className="grade-grid">
+                {students.map((s) => (
+                  <div key={s.id} className="student-card student-card-compact">
+                    <header className="student-header">
+                      <div>
+                        <h4 className="student-name student-name-compact">{s.name}</h4>
+                        <div className="student-meta">Grade {s.grade}</div>
+                      </div>
+                    </header>
+                    <div className="student-card-actions">
+                      <Link to={`/student/${s.id}`} className="nav-link view-profile-link">
+                        View profile
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="student-card grade-empty-state">
+                No students in this grade yet.
+              </div>
+            )}
+          </section>
         ))}
       </div>
     </div>
