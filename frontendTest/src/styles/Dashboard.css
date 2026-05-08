@@ -2,100 +2,184 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 20px;
+  display: grid;
+  gap: 1.25rem;
 }
 
-.dashboard-header {
-  margin-bottom: 2rem;
+.dashboard-hero {
+  background: linear-gradient(135deg, #123a5a, #1f6a8f 60%, #2f8cb9);
+  border-radius: 14px;
+  color: #ffffff;
+  padding: 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: 0 10px 26px rgba(18, 58, 90, 0.22);
 }
 
-.dashboard-header h1 {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  margin: 0 0 0.5rem 0;
+.hero-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  opacity: 0.85;
+  margin: 0 0 0.3rem;
 }
 
-.dashboard-header p {
-  color: #7f8c8d;
-  font-size: 1.1rem;
+.dashboard-hero h1 {
+  margin: 0;
+  font-size: 2.1rem;
+}
+
+.hero-subtitle {
+  margin: 0.5rem 0 0;
+  max-width: 620px;
+  opacity: 0.9;
+}
+
+.hero-badge {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.1rem;
+  border: 1px solid #dbe7f2;
+  box-shadow: 0 2px 8px rgba(24, 49, 82, 0.08);
+}
+
+.stat-card h3 {
+  color: #0f4c81;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.stat-card p {
+  margin: 0.35rem 0 0;
+  color: #496177;
+  font-size: 0.92rem;
+}
+
+.stat-card-warning h3 {
+  color: #9a521f;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
 }
 
 .students-section {
-  margin-bottom: 2rem;
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #dbe7f2;
+  box-shadow: 0 2px 8px rgba(24, 49, 82, 0.08);
 }
 
-.students-section h2 {
-  color: #2c3e50;
-  margin-top: 0;
-  margin-bottom: 1rem;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.section-header h2 {
+  color: #20364a;
+  margin: 0;
+}
+
+.section-header span {
+  color: #6d8398;
+  font-size: 0.85rem;
 }
 
 .students-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
 }
 
 .students-table thead {
-  background-color: #ecf0f1;
+  background: #f2f7fc;
 }
 
 .students-table th {
-  padding: 1rem;
+  padding: 0.8rem;
   text-align: left;
   font-weight: 600;
-  color: #2c3e50;
-  border-bottom: 2px solid #bdc3c7;
+  color: #284156;
+  border-bottom: 1px solid #d8e5f1;
 }
 
 .students-table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #ecf0f1;
-  color: #34495e;
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid #edf3f9;
+  color: #31495d;
 }
 
 .students-table tbody tr:hover {
-  background-color: #f8f9fa;
+  background: #f9fcff;
 }
 
 .grade-badge {
-  background-color: #3498db;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.85rem;
+  background: #e5f2ff;
+  color: #0f4c81;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.82rem;
 }
 
-.dashboard-stats {
+.teacher-panel {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #dbe7f2;
+  box-shadow: 0 2px 8px rgba(24, 49, 82, 0.08);
+}
+
+.teacher-panel h2,
+.teacher-panel h3 {
+  margin: 0;
+  color: #20364a;
+}
+
+.notes-list {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+  color: #42596e;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 0.55rem;
 }
 
-.stat-card {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-  text-align: center;
+.panel-divider {
+  margin: 1rem 0;
+  border-top: 1px solid #e5eef7;
 }
 
-.stat-card h3 {
-  font-size: 2.5rem;
-  margin: 0;
-  margin-bottom: 0.5rem;
+.schedule-item {
+  margin: 0.6rem 0 0;
+  color: #42596e;
+  font-size: 0.92rem;
 }
 
-.stat-card p {
-  margin: 0;
-  font-size: 0.95rem;
-  opacity: 0.9;
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -103,20 +187,23 @@
     padding: 1rem 15px;
   }
 
-  .dashboard-header h1 {
-    font-size: 1.8rem;
+  .dashboard-hero {
+    flex-direction: column;
   }
 
-  .students-section {
+  .dashboard-hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .students-section,
+  .teacher-panel,
+  .stat-card {
     padding: 1rem;
   }
 
   .students-table th,
   .students-table td {
-    padding: 0.5rem;
-  }
-
-  .dashboard-stats {
-    grid-template-columns: 1fr;
+    padding: 0.55rem;
+    font-size: 0.92rem;
   }
 }
