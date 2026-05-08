@@ -12,6 +12,21 @@ const sampleStudents = [
     id: 2,
     name: 'Saman Silva',
     grade: '10'
+  },
+  {
+    id: 3,
+    name: 'Nimasha Jayawardena',
+    grade: '11'
+  },
+  {
+    id: 4,
+    name: 'Tharindu Wickramasinghe',
+    grade: '11'
+  },
+  {
+    id: 5,
+    name: 'Sethmi Ranasinghe',
+    grade: '11'
   }
 ]
 
