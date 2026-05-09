@@ -28,6 +28,11 @@ function Navbar() {
               Assignments
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink to="/settings" className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}>
+              Settings
+            </NavLink>
+          </li>
         </ul>
         <button onClick={handleLogout} className="logout-btn">
           Logout
