@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/Student.css";
-import ParentModal from './ParentModal'
 
 // Simple Student component showing three-term marks per subject,
 // totals/averages, and two analysis charts (subject totals, term averages).
@@ -57,7 +56,6 @@ function SimpleBarChart({ data, width = 600, height = 300, labelKey = 'value' })
 }
 
 export default function Student({ student = sampleStudent }) {
-  const [showParentModal, setShowParentModal] = useState(false)
   // compute per-subject totals and averages
   const renderStars = (rating = 0) => {
     const max = 5
@@ -107,14 +105,6 @@ export default function Student({ student = sampleStudent }) {
       <header className="student-header">
         <h2 className="student-name">{student.name}</h2>
         <div className="student-meta">Grade: {student.grade}</div>
-        <div className="student-meta">
-          <button className="msg-btn" onClick={() => setShowParentModal(true)}>
-            Show Parent
-          </button>
-        </div>
-        {showParentModal && (
-          <ParentModal student={student} onClose={() => setShowParentModal(false)} />
-        )}
         {renderStars(student.rating)}
       </header>
 
