@@ -186,7 +186,142 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   margin-bottom: 12px;
+}
+
+.student-profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 1;
+  min-width: 0;
+}
+
+.student-avatar-wrap {
+  flex-shrink: 0;
+}
+
+.student-avatar {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #dbeafe;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+}
+
+.student-avatar-fallback {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #0f4c81, #35a7ff);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+}
+
+.student-profile-copy {
+  min-width: 0;
+}
+
+.profile-kicker {
+  margin: 0 0 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #0f4c81;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.profile-edit-row {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.profile-field {
+  display: grid;
+  gap: 6px;
+  max-width: 360px;
+}
+
+.profile-field span,
+.profile-detail span {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.profile-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.8rem 0.95rem;
+  font-size: 1rem;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-input:focus {
+  border-color: #0f4c81;
+  box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.15);
+}
+
+.profile-hint {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.student-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 18px 0 20px;
+}
+
+.student-profile-panel {
+  border: 1px solid #e6eef8;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f9fcff, #ffffff);
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.student-profile-panel h3 {
+  margin: 0 0 14px;
+  color: #0f172a;
+}
+
+.profile-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.profile-detail {
+  background: #ffffff;
+  border: 1px solid #e6eef8;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.profile-detail strong {
+  display: block;
+  margin-top: 4px;
+  color: #0f172a;
+  font-size: 0.98rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.profile-detail-wide {
+  grid-column: 1 / -1;
 }
 
 .student-name {
@@ -343,3 +478,38 @@
 .student-review { margin-top: 8px; }
 .star { font-size: 1.05rem; color: #cbd5e1; margin-right: 4px }
 .star.filled { color: #f59e0b }
+
+@media (max-width: 900px) {
+  .student-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .student-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .student-profile-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .student-avatar {
+    width: 92px;
+    height: 92px;
+  }
+
+  .student-details {
+    flex-direction: column;
+  }
+
+  .marks-table {
+    width: 100%;
+  }
+}
