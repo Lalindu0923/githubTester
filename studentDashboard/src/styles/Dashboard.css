@@ -6,6 +6,44 @@
   gap: 1.25rem;
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
 .student-hero {
   background: linear-gradient(135deg, #0f4c81, #1f7a8c 60%, #35a7ff);
   border-radius: 18px;
@@ -16,6 +54,41 @@
   gap: 1rem;
   align-items: flex-start;
   box-shadow: 0 14px 30px rgba(15, 76, 129, 0.24);
+  position: relative;
+  overflow: hidden;
+}
+
+.student-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  animation: shimmer 8s linear infinite;
+  pointer-events: none;
+}
+
+.student-hero::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.student-hero > div:first-child,
+.student-hero > div:last-child {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-tag {
@@ -46,6 +119,28 @@
   white-space: nowrap;
 }
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .student-stat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -58,6 +153,32 @@
   padding: 1.15rem;
   border: 1px solid #d6e4ef;
   box-shadow: 0 2px 8px rgba(24, 49, 82, 0.08);
+  animation: fadeInUp 0.6s ease-out;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.student-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.student-stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(24, 49, 82, 0.15);
+  border-color: #0f4c81;
+}
+
+.student-stat-card:hover::before {
+  left: 100%;
 }
 
 .student-stat-card h3 {
@@ -123,6 +244,15 @@
   justify-content: space-between;
   gap: 1rem;
   align-items: center;
+  animation: fadeInUp 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.task-card:hover,
+.assignment-row:hover {
+  box-shadow: 0 4px 12px rgba(24, 49, 82, 0.1);
+  transform: translateX(4px);
+  border-color: #0f4c81;
 }
 
 .task-card h3,
@@ -219,6 +349,17 @@
   margin-top: 1rem;
 }
 
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .subject-card {
   background: #ffffff;
   border: 1px solid #e3edf6;
@@ -228,11 +369,30 @@
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
+  animation: slideInUp 0.6s ease-out;
+  position: relative;
+}
+
+.subject-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .subject-card:hover {
   box-shadow: 0 8px 24px rgba(24, 49, 82, 0.12);
-  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.subject-card:hover::after {
+  opacity: 1;
 }
 
 .subject-header {
