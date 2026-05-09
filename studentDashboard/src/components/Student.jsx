@@ -65,9 +65,13 @@ function SimpleBarChart({ data, width = 600, height = 300, labelKey = 'value' })
 
 export default function Student({ student = sampleStudent }) {
   const [editableName, setEditableName] = useState(student.name)
+  const [nameDraft, setNameDraft] = useState(student.name)
+  const [isEditingName, setIsEditingName] = useState(false)
 
   useEffect(() => {
     setEditableName(student.name)
+    setNameDraft(student.name)
+    setIsEditingName(false)
   }, [student])
 
   const initials = useMemo(() => {
@@ -135,19 +139,58 @@ export default function Student({ student = sampleStudent }) {
 
           <div className="student-profile-copy">
             <p className="profile-kicker">Student Profile</p>
-            <h2 className="student-name">{editableName}</h2>
-            <div className="profile-edit-row">
-              <label className="profile-field">
-                <span>Name</span>
-                <input
-                  type="text"
-                  value={editableName}
-                  onChange={(event) => setEditableName(event.target.value)}
-                  className="profile-input"
-                />
-              </label>
-              <p className="profile-hint">Only the name can be edited.</p>
+            <div className="student-name-row">
+              <h2 className="student-name">{editableName}</h2>
+              <button
+                type="button"
+                className="name-edit-btn"
+                onClick={() => {
+                  setNameDraft(editableName)
+                  setIsEditingName(true)
+                }}
+                aria-label="Edit student name"
+                title="Edit name"
+              >
+                ✎
+              </button>
             </div>
+            {isEditingName ? (
+              <div className="profile-edit-row">
+                <label className="profile-field">
+                  <span>Name</span>
+                  <input
+                    type="text"
+                    value={nameDraft}
+                    onChange={(event) => setNameDraft(event.target.value)}
+                    className="profile-input"
+                  />
+                </label>
+                <div className="name-edit-actions">
+                  <button
+                    type="button"
+                    className="name-save-btn"
+                    onClick={() => {
+                      setEditableName(nameDraft.trim() || editableName)
+                      setIsEditingName(false)
+                    }}
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    className="name-cancel-btn"
+                    onClick={() => {
+                      setNameDraft(editableName)
+                      setIsEditingName(false)
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="profile-hint">Only the name can be edited using the icon.</p>
+            )}
           </div>
         </div>
         {renderStars(student.rating)}

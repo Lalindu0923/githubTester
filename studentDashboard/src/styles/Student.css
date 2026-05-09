@@ -234,6 +234,38 @@
   font-weight: 700;
 }
 
+.student-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.name-edit-btn,
+.name-save-btn,
+.name-cancel-btn {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-weight: 700;
+}
+
+.name-edit-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-grid;
+  place-items: center;
+  background: #e0f2fe;
+  color: #0f4c81;
+  font-size: 1rem;
+}
+
+.name-edit-btn:hover {
+  background: #bfdbfe;
+  transform: translateY(-1px);
+}
+
 .profile-edit-row {
   display: grid;
   gap: 8px;
@@ -270,6 +302,34 @@
 .profile-input:focus {
   border-color: #0f4c81;
   box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.15);
+}
+
+.name-edit-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.name-save-btn {
+  background: #0f4c81;
+  color: #ffffff;
+  padding: 0.55rem 1rem;
+}
+
+.name-save-btn:hover {
+  background: #0b3f68;
+  transform: translateY(-1px);
+}
+
+.name-cancel-btn {
+  background: #e2e8f0;
+  color: #334155;
+  padding: 0.55rem 1rem;
+}
+
+.name-cancel-btn:hover {
+  background: #cbd5e1;
+  transform: translateY(-1px);
 }
 
 .profile-hint {
