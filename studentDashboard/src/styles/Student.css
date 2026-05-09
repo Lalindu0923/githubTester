@@ -324,26 +324,73 @@
   grid-column: 1 / -1;
 }
 
+.student-subjects-section {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #dbe4ef;
+}
+
+.student-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.student-section-header h3,
+.student-subject-panel h4 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.student-section-header h3 {
+  font-size: 1.35rem;
+}
+
+.section-note {
+  margin: 0;
+  color: #64748b;
+  max-width: 520px;
+  text-align: right;
+}
+
+.student-subjects-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+}
+
+.student-subject-panel {
+  background: linear-gradient(180deg, #f9fcff, #ffffff);
+  border: 1px solid #e6eef8;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.student-table-panel {
+  grid-row: span 2;
+}
+
+.student-subject-panel h4 {
+  font-size: 1.02rem;
+  margin-bottom: 12px;
+}
+
+.student-analysis-panel {
+  grid-column: 2;
+}
+
 .student-name {
   margin: 0;
   font-size: 1.25rem;
   color: #0f172a;
 }
 
-.student-meta {
-  color: #475569;
-  font-size: 0.95rem;
-}
-
-.student-details {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-
 .marks-table {
   border-collapse: collapse;
-  width: 320px;
+  width: 100%;
 }
 
 .marks-table th,
@@ -366,13 +413,7 @@
 }
 
 .chart-wrap {
-  flex: 1;
-}
-
-.student-analysis {
-  margin-top: 20px;
-  padding-top: 12px;
-  border-top: 1px dashed #e6eef8;
+  width: 100%;
 }
 
 .analysis-note {
@@ -492,6 +533,25 @@
   .profile-details-grid {
     grid-template-columns: 1fr;
   }
+
+  .student-subjects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-table-panel,
+  .student-analysis-panel {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .student-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-note {
+    text-align: left;
+  }
 }
 
 @media (max-width: 640px) {
@@ -507,9 +567,5 @@
 
   .student-details {
     flex-direction: column;
-  }
-
-  .marks-table {
-    width: 100%;
   }
 }

@@ -215,49 +215,64 @@ export default function Student({ student = sampleStudent }) {
         </article>
       </section>
 
-      <section className="student-details">
-        <table className="marks-table">
-          <thead>
-            <tr>
-              <th>Subject</th>
-              <th>1st Term</th>
-              <th>2nd Term</th>
-              <th>3rd Term</th>
-              <th>Total</th>
-              <th>Average</th>
-            </tr>
-          </thead>
-          <tbody>
-            {subjectsWithTotals.map((s) => (
-              <tr key={s.name}>
-                <td>{s.name}</td>
-                <td>{s.term1}</td>
-                <td>{s.term2}</td>
-                <td>{s.term3}</td>
-                <td>{s.total}</td>
-                <td>{s.average}</td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan={4}>Overall</td>
-              <td>{overallTotal}</td>
-              <td>{overallAverage}</td>
-            </tr>
-          </tfoot>
-        </table>
-
-        <div className="chart-wrap">
-          <h3>Subject Totals (Year)</h3>
-          <SimpleBarChart data={subjectTotalsForChart} width={720} height={320} labelKey="value" />
+      <section className="student-subjects-section">
+        <div className="student-section-header">
+          <div>
+            <p className="profile-kicker">Academic Summary</p>
+            <h3>Subject Details</h3>
+          </div>
+          <p className="section-note">Marks, totals, and term analysis are grouped here for easier review.</p>
         </div>
-      </section>
 
-      <section className="student-analysis">
-        <h3>Term Averages Analysis</h3>
-        <p className="analysis-note">This chart shows average marks per term across all subjects.</p>
-        <SimpleBarChart data={termAverages} width={560} height={220} labelKey="value" />
+        <div className="student-subjects-grid">
+          <article className="student-subject-panel student-table-panel">
+            <h4>Subject Marks</h4>
+            <table className="marks-table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>1st Term</th>
+                  <th>2nd Term</th>
+                  <th>3rd Term</th>
+                  <th>Total</th>
+                  <th>Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                {subjectsWithTotals.map((s) => (
+                  <tr key={s.name}>
+                    <td>{s.name}</td>
+                    <td>{s.term1}</td>
+                    <td>{s.term2}</td>
+                    <td>{s.term3}</td>
+                    <td>{s.total}</td>
+                    <td>{s.average}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan={4}>Overall</td>
+                  <td>{overallTotal}</td>
+                  <td>{overallAverage}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </article>
+
+          <article className="student-subject-panel">
+            <h4>Subject Totals</h4>
+            <div className="chart-wrap">
+              <SimpleBarChart data={subjectTotalsForChart} width={720} height={320} labelKey="value" />
+            </div>
+          </article>
+
+          <article className="student-subject-panel student-analysis-panel">
+            <h4>Term Averages Analysis</h4>
+            <p className="analysis-note">This chart shows average marks per term across all subjects.</p>
+            <SimpleBarChart data={termAverages} width={560} height={220} labelKey="value" />
+          </article>
+        </div>
       </section>
     </div>
   )
