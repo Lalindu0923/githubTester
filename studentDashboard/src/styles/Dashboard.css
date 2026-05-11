@@ -61,6 +61,29 @@
   overflow: hidden;
 }
 
+.dashboard-settings-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-radius: 10px;
+  text-decoration: none;
+  z-index: 2;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.dashboard-settings-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
 .student-hero::before {
   content: '';
   position: absolute;
