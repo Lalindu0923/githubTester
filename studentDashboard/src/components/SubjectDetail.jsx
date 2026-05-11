@@ -4,6 +4,45 @@ import '../styles/SubjectDetail.css'
 export default function SubjectDetail({ subject, onClose }) {
   if (!subject) return null
 
+  const renderTermTrendChart = (termAnalysis) => {
+    const chartWidth = 520
+    const chartHeight = 220
+    const padding = 32
+    const pointGap = (chartWidth - padding * 2) / Math.max(termAnalysis.length - 1, 1)
+
+    const points = termAnalysis.map((term, index) => {
+      const x = padding + index * pointGap
+      const y = chartHeight - padding - (term.score / 100) * (chartHeight - padding * 2)
+      return { ...term, x, y }
+    })
+
+    const linePath = points.map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`).join(' ')
+
+    return (
+      <svg className="term-trend-svg" viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label="Three-term marks trend">
+        {[0, 25, 50, 75, 100].map((value) => {
+          const y = chartHeight - padding - (value / 100) * (chartHeight - padding * 2)
+          return (
+            <g key={value}>
+              <line x1={padding} y1={y} x2={chartWidth - padding} y2={y} className="term-grid-line" />
+              <text x={padding - 8} y={y + 4} className="term-axis-label">{value}</text>
+            </g>
+          )
+        })}
+
+        <path d={linePath} className="term-trend-line" />
+
+        {points.map((point) => (
+          <g key={point.term}>
+            <circle cx={point.x} cy={point.y} r="5" className="term-trend-point" />
+            <text x={point.x} y={chartHeight - 10} textAnchor="middle" className="term-axis-label">{point.term}</text>
+            <text x={point.x} y={point.y - 10} textAnchor="middle" className="term-value-label">{point.score}%</text>
+          </g>
+        ))}
+      </svg>
+    )
+  }
+
   // Demo data for the subject
   const subjectDetails = {
     Mathematics: {
@@ -22,6 +61,11 @@ export default function SubjectDetail({ subject, onClose }) {
         { exam: 'Mid-term Test 1', date: '2026-04-20', marks: 88, totalMarks: 100 },
         { exam: 'Quiz 1', date: '2026-04-15', marks: 19, totalMarks: 20 },
         { exam: 'Class Work', date: '2026-04-10', marks: 9, totalMarks: 10 }
+      ],
+      termAnalysis: [
+        { term: 'Term 1', score: 82 },
+        { term: 'Term 2', score: 85 },
+        { term: 'Term 3', score: 87 }
       ]
     },
     Science: {
@@ -40,6 +84,11 @@ export default function SubjectDetail({ subject, onClose }) {
         { exam: 'Unit Test 1', date: '2026-04-18', marks: 76, totalMarks: 100 },
         { exam: 'Practical Exam', date: '2026-04-12', marks: 18, totalMarks: 20 },
         { exam: 'Class Work', date: '2026-04-08', marks: 8, totalMarks: 10 }
+      ],
+      termAnalysis: [
+        { term: 'Term 1', score: 72 },
+        { term: 'Term 2', score: 76 },
+        { term: 'Term 3', score: 79 }
       ]
     },
     English: {
@@ -58,6 +107,11 @@ export default function SubjectDetail({ subject, onClose }) {
         { exam: 'Literature Test', date: '2026-04-22', marks: 92, totalMarks: 100 },
         { exam: 'Speaking Test', date: '2026-04-17', marks: 19, totalMarks: 20 },
         { exam: 'Class Work', date: '2026-04-09', marks: 9, totalMarks: 10 }
+      ],
+      termAnalysis: [
+        { term: 'Term 1', score: 89 },
+        { term: 'Term 2', score: 91 },
+        { term: 'Term 3', score: 92 }
       ]
     },
     History: {
@@ -76,6 +130,11 @@ export default function SubjectDetail({ subject, onClose }) {
         { exam: 'History Test', date: '2026-04-19', marks: 70, totalMarks: 100 },
         { exam: 'Presentation', date: '2026-04-14', marks: 17, totalMarks: 20 },
         { exam: 'Class Work', date: '2026-04-11', marks: 7, totalMarks: 10 }
+      ],
+      termAnalysis: [
+        { term: 'Term 1', score: 66 },
+        { term: 'Term 2', score: 68 },
+        { term: 'Term 3', score: 70 }
       ]
     },
     Computer: {
@@ -94,6 +153,11 @@ export default function SubjectDetail({ subject, onClose }) {
         { exam: 'Programming Test', date: '2026-04-21', marks: 88, totalMarks: 100 },
         { exam: 'Practical Lab', date: '2026-04-16', marks: 20, totalMarks: 20 },
         { exam: 'Class Work', date: '2026-04-13', marks: 9, totalMarks: 10 }
+      ],
+      termAnalysis: [
+        { term: 'Term 1', score: 81 },
+        { term: 'Term 2', score: 85 },
+        { term: 'Term 3', score: 88 }
       ]
     }
   }
@@ -185,6 +249,24 @@ export default function SubjectDetail({ subject, onClose }) {
           </div>
 
           {/* Assignments Section */}
+          <div className="detail-panel full-width">
+            <h2>Term Analysis (1 Year)</h2>
+            <div className="term-analysis-layout">
+              <div className="term-chart-wrap">
+                {renderTermTrendChart(details.termAnalysis)}
+              </div>
+
+              <div className="term-summary-grid">
+                {details.termAnalysis.map((term) => (
+                  <div key={term.term} className="term-summary-card">
+                    <p className="term-name">{term.term}</p>
+                    <p className="term-score">{term.score}%</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="detail-panel full-width">
             <h2>Assignments</h2>
             <div className="assignments-list">

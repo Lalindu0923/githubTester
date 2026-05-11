@@ -222,6 +222,86 @@
   font-size: 0.9rem;
 }
 
+.term-analysis-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.term-chart-wrap {
+  background: #ffffff;
+  border: 1px solid #e3edf6;
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.term-trend-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.term-grid-line {
+  stroke: #e8edf3;
+  stroke-width: 1;
+}
+
+.term-trend-line {
+  fill: none;
+  stroke: #4f46e5;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.term-trend-point {
+  fill: #4f46e5;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.term-axis-label {
+  fill: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.term-value-label {
+  fill: #17324d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.term-summary-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.term-summary-card {
+  background: #ffffff;
+  border: 1px solid #e3edf6;
+  border-left: 4px solid #4f46e5;
+  border-radius: 10px;
+  padding: 0.85rem 0.9rem;
+}
+
+.term-name {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.term-score {
+  margin: 0.35rem 0 0;
+  color: #17324d;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
 .assignments-list {
   display: flex;
   flex-direction: column;
@@ -304,6 +384,10 @@
   }
 
   .overview-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .term-analysis-layout {
     grid-template-columns: 1fr;
   }
 
