@@ -17,7 +17,7 @@ public class Bill extends Bed{
         System.out.println("Name :"+" "+name);
         System.out.println("payment :"+" "+billpay+"$");
         System.out.println("");
-        System.out.println("Have A nice Day...");
+        System.out.println("Have A Good Day...");
         
 
 
