@@ -100,7 +100,9 @@ function Dashboard() {
           </article>
         ))}
       </section>
-
+      <div>
+        <h1>This is the test heading one </h1>
+      </div>
       <section className="student-dashboard-grid">
         <div className="student-main-panel">
           <div className="section-header">
