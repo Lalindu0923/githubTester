@@ -1,4 +1,5 @@
 import java.util.* ;
+
 public class Bed extends  Patient{
     static int bedNO;
     static int wardNO;
