@@ -13,6 +13,12 @@
   padding: 0 20px;
 }
 
+.navbar-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -23,6 +29,13 @@
 
 .navbar-logo:hover {
   color: #dff1ff;
+}
+
+.navbar-student-name {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .nav-menu {
@@ -78,6 +91,10 @@
 
   .navbar-logo {
     font-size: 1.2rem;
+  }
+
+  .navbar-student-name {
+    font-size: 0.8rem;
   }
 
   .nav-link {

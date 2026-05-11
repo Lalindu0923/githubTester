@@ -3,28 +3,6 @@ import { useState } from 'react'
 import TeacherModal from './TeacherModal'
 import SubjectDetail from './SubjectDetail'
 
-const readStoredStudentName = () => {
-  const directName = localStorage.getItem('studentName') || localStorage.getItem('loggedInStudentName')
-  if (directName) return directName
-
-  const jsonKeys = ['currentStudent', 'currentUser', 'student', 'user']
-  for (const key of jsonKeys) {
-    const rawValue = localStorage.getItem(key) || sessionStorage.getItem(key)
-    if (!rawValue) continue
-
-    try {
-      const parsedValue = JSON.parse(rawValue)
-      if (parsedValue?.name) return parsedValue.name
-      if (parsedValue?.studentName) return parsedValue.studentName
-      if (parsedValue?.fullName) return parsedValue.fullName
-    } catch {
-      // Ignore invalid JSON and continue checking next key.
-    }
-  }
-
-  return 'Student'
-}
-
 const upcomingTasks = [
   { title: 'Finish Mathematics Worksheet 4', due: 'Tomorrow', status: 'Pending' },
   { title: 'Submit Science Lab Notes', due: 'In 2 days', status: 'Started' },
@@ -102,14 +80,13 @@ function Dashboard() {
   const [selectedTeacher, setSelectedTeacher] = useState(null)
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [selectedSubjectDetail, setSelectedSubjectDetail] = useState(null)
-  const [studentName] = useState(readStoredStudentName)
 
   return (
     <div className="student-dashboard-shell">
       <section className="student-hero">
         <div>
           <p className="hero-tag">Student Space</p>
-          <h1>{studentName}</h1>
+          <h1>Student Dashboard</h1>
           <p className="hero-subtitle">Track your homework, check today’s classes, and keep an eye on your progress.</p>
         </div>
         <div className="hero-badge">Welcome back</div>
