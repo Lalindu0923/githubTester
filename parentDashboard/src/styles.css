@@ -3,16 +3,25 @@
 body{margin:0;background:var(--bg);color:#111}
 .header{display:flex;align-items:center;gap:16px;padding:20px;background:linear-gradient(90deg,#fff, #f8fbff);border-bottom:1px solid #e6eefc}
 .header h1{margin:0;font-size:1.25rem}
-.header input{flex:1;padding:8px 12px;border:1px solid #dbeafe;border-radius:6px}
+.eyebrow{margin:0 0 4px;color:var(--accent);font-size:0.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.header-note{margin-left:auto;color:var(--muted);font-size:0.95rem}
 .container{display:grid;grid-template-columns:1fr 320px;gap:16px;padding:20px;max-width:1100px;margin:20px auto}
 .card{padding:12px;background:var(--card);border-radius:8px;box-shadow:0 1px 2px rgba(16,24,40,0.04)}
 .list{display:grid;gap:12px}
 .parent-card{background:var(--card);padding:12px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;border:1px solid #eef2ff}
+.student-card{width:100%;text-align:left;cursor:pointer}
+.student-card.selected{border-color:var(--accent);box-shadow:0 0 0 2px rgba(43,109,246,.12)}
 .parent-info{display:flex;flex-direction:column}
 .parent-name{font-weight:600}
 .muted{color:var(--muted);font-size:0.9rem}
 .btn{background:var(--accent);color:#fff;padding:8px 10px;border-radius:6px;border:none;cursor:pointer}
 .details{padding:16px;background:var(--card);border-radius:8px;border:1px solid #eef2ff}
 .details.hidden{display:none}
+.details-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px}
+.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 18px}
+.detail-item{padding:10px;border:1px solid #e5e7eb;border-radius:8px;background:#fafcff}
+.detail-item span{display:block;color:var(--muted);font-size:0.8rem;margin-bottom:4px}
+.detail-item strong{font-size:0.98rem}
 .close{background:transparent;border:0;color:var(--muted);cursor:pointer;margin-bottom:8px}
 @media(max-width:900px){.container{grid-template-columns:1fr;}.details{order:3}}
+@media(max-width:600px){.detail-grid{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start}.header-note{margin-left:0}}
