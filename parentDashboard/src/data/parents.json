@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "parentClass": "Grade 4 Parent",
+    "contact": "+91 98765 43210",
+    "children": [
+      {
+        "id": 101,
+        "name": "Emma Johnson",
+        "grade": "1",
+        "section": "A",
+        "rollNo": "14",
+        "classTeacher": "Mrs. Anjali Perera",
+        "attendance": "96%",
+        "feesStatus": "Paid",
+        "subjects": [
+          {"name": "Maths", "marks": "92/100"},
+          {"name": "English", "marks": "88/100"},
+          {"name": "Science", "marks": "95/100"}
+        ],
+        "homework": ["Read chapter 4", "Math worksheet page 12", "Prepare art project"],
+        "remarks": "Excellent participation in class and very attentive in homework.",
+        "upcomingEvents": [
+          {"title": "Parent Meeting", "date": "2026-05-20"},
+          {"title": "Field Trip", "date": "2026-05-22"}
+        ]
+      },
+      {
+        "id": 102,
+        "name": "Noah Johnson",
+        "grade": "4",
+        "section": "B",
+        "rollNo": "07",
+        "classTeacher": "Mr. Ruwan Fernando",
+        "attendance": "91%",
+        "feesStatus": "Pending",
+        "subjects": [
+          {"name": "Maths", "marks": "85/100"},
+          {"name": "English", "marks": "79/100"},
+          {"name": "Science", "marks": "90/100"}
+        ],
+        "homework": ["Practice spelling list", "Finish science lab sheet"],
+        "remarks": "Shows good progress but needs to submit homework on time.",
+        "upcomingEvents": [
+          {"title": "Sports Day", "date": "2026-05-28"},
+          {"title": "Book Fair", "date": "2026-06-01"}
+        ]
+      }
+    ]
+  }
+]

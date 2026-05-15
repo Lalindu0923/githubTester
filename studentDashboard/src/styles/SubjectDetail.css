@@ -1,0 +1,410 @@
+.subject-detail-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(2, 6, 23, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.subject-detail-container {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  box-shadow: 0 20px 60px rgba(2, 6, 23, 0.4);
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  color: #ffffff;
+}
+
+.close-btn:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.detail-header {
+  padding: 2.5rem 2rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  border-radius: 16px 16px 0 0;
+}
+
+.detail-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.detail-subtitle {
+  margin: 0.5rem 0 0;
+  opacity: 0.95;
+  font-size: 1rem;
+}
+
+.detail-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.detail-panel {
+  background: #f9fcff;
+  border: 1px solid #d6e4ef;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.detail-panel.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-panel h2 {
+  margin: 0 0 1rem;
+  color: #17324d;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #4f46e5;
+  padding-bottom: 0.75rem;
+}
+
+.detail-panel h3 {
+  margin: 1.5rem 0 1rem;
+  color: #42596e;
+  font-size: 1rem;
+}
+
+.overview-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.overview-card {
+  background: #ffffff;
+  border: 1px solid #e3edf6;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.overview-card .label {
+  display: block;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.overview-card p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #17324d;
+}
+
+.marks-badge {
+  color: #4f46e5;
+}
+
+.attendance-badge {
+  color: #10b981;
+}
+
+.teacher-info {
+  background: #ffffff;
+  border: 1px solid #e3edf6;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.teacher-info p {
+  margin: 0.75rem 0;
+  color: #42596e;
+  font-size: 0.95rem;
+}
+
+.teacher-info strong {
+  color: #17324d;
+}
+
+.teacher-info a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.teacher-info a:hover {
+  text-decoration: underline;
+}
+
+.grades-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.grade-item {
+  background: #ffffff;
+  border: 1px solid #e3edf6;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.grade-item:hover {
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1);
+}
+
+.grade-info {
+  flex: 1;
+}
+
+.grade-exam {
+  margin: 0;
+  font-weight: 600;
+  color: #17324d;
+  font-size: 0.95rem;
+}
+
+.grade-date {
+  margin: 0.35rem 0 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.grade-score {
+  text-align: right;
+}
+
+.score {
+  background: #4f46e5;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.term-analysis-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.term-chart-wrap {
+  background: #ffffff;
+  border: 1px solid #e3edf6;
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.term-trend-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.term-grid-line {
+  stroke: #e8edf3;
+  stroke-width: 1;
+}
+
+.term-trend-line {
+  fill: none;
+  stroke: #4f46e5;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.term-trend-point {
+  fill: #4f46e5;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.term-axis-label {
+  fill: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.term-value-label {
+  fill: #17324d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.term-summary-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.term-summary-card {
+  background: #ffffff;
+  border: 1px solid #e3edf6;
+  border-left: 4px solid #4f46e5;
+  border-radius: 10px;
+  padding: 0.85rem 0.9rem;
+}
+
+.term-name {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.term-score {
+  margin: 0.35rem 0 0;
+  color: #17324d;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.assignments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.assignment-item {
+  background: #ffffff;
+  border: 1px solid #e3edf6;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.assignment-item:hover {
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1);
+}
+
+.assignment-left {
+  flex: 1;
+}
+
+.assignment-item h4 {
+  margin: 0;
+  color: #17324d;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.assignment-date {
+  margin: 0.35rem 0 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.assignment-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.marks-display {
+  background: #f3f4f6;
+  color: #17324d;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .detail-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .detail-content {
+    padding: 1.5rem;
+  }
+
+  .overview-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .term-analysis-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .assignment-item,
+  .grade-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .assignment-right {
+    margin-left: 0;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .grade-score {
+    text-align: left;
+    margin-top: 0.75rem;
+  }
+}
