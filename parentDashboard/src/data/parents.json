@@ -1,7 +1,13 @@
-[
+﻿[
   {
     "id": 1,
     "name": "Alice Johnson",
+    "email": "alice.johnson@email.com",
+    "phone": "+91 98765 43210",
+    "address": "123 Main St, City",
+    "city": "Springfield",
+    "state": "State",
+    "zipCode": "12345",
     "parentClass": "Grade 4 Parent",
     "contact": "+91 98765 43210",
     "children": [
@@ -12,15 +18,36 @@
         "section": "A",
         "rollNo": "14",
         "classTeacher": "Mrs. Anjali Perera",
+        "dob": "2020-03-15",
         "attendance": "96%",
+        "monthlyAttendance": [
+          {"month": "Jan", "days": 20, "total": 21},
+          {"month": "Feb", "days": 18, "total": 20},
+          {"month": "Mar", "days": 21, "total": 22}
+        ],
         "feesStatus": "Paid",
+        "fees": [
+          {"month": "Jan", "amount": 5000, "status": "Paid", "date": "2026-01-05"},
+          {"month": "Feb", "amount": 5000, "status": "Paid", "date": "2026-02-05"},
+          {"month": "Mar", "amount": 5000, "status": "Paid", "date": "2026-03-05"}
+        ],
+        "totalFees": 25000,
+        "feesPerMonth": 5000,
         "subjects": [
-          {"name": "Maths", "marks": "92/100"},
-          {"name": "English", "marks": "88/100"},
-          {"name": "Science", "marks": "95/100"}
+          {"name": "Maths", "teacher": "Mr. Ravi Kumar", "marks": "92/100", "yearlyMarks": [{"term": "Term 1", "marks": 88}, {"term": "Term 2", "marks": 92}, {"term": "Term 3", "marks": 94}]},
+          {"name": "English", "teacher": "Ms. Priya Sharma", "marks": "88/100", "yearlyMarks": [{"term": "Term 1", "marks": 85}, {"term": "Term 2", "marks": 88}, {"term": "Term 3", "marks": 90}]},
+          {"name": "Science", "teacher": "Dr. Vikram Singh", "marks": "95/100", "yearlyMarks": [{"term": "Term 1", "marks": 93}, {"term": "Term 2", "marks": 95}, {"term": "Term 3", "marks": 96}]},
+          {"name": "History", "teacher": "Mrs. Deepa Nair", "marks": "87/100", "yearlyMarks": [{"term": "Term 1", "marks": 84}, {"term": "Term 2", "marks": 87}, {"term": "Term 3", "marks": 90}]},
+          {"name": "Geography", "teacher": "Mr. Arun Patel", "marks": "89/100", "yearlyMarks": [{"term": "Term 1", "marks": 86}, {"term": "Term 2", "marks": 89}, {"term": "Term 3", "marks": 91}]},
+          {"name": "Physical Education", "teacher": "Coach Arjun Singh", "marks": "93/100", "yearlyMarks": [{"term": "Term 1", "marks": 91}, {"term": "Term 2", "marks": 93}, {"term": "Term 3", "marks": 95}]}
         ],
         "homework": ["Read chapter 4", "Math worksheet page 12", "Prepare art project"],
         "remarks": "Excellent participation in class and very attentive in homework.",
+        "messages": [
+          {"from": "Mrs. Anjali Perera", "date": "2026-05-14", "subject": "Great progress!", "text": "Emma is doing very well in Maths. Great work!"},
+          {"from": "Mrs. Anjali Perera", "date": "2026-05-12", "subject": "Field trip reminder", "text": "Please send the field trip form by Friday."},
+          {"from": "School Admin", "date": "2026-05-10", "subject": "Holiday announcement", "text": "School will be closed for holidays from May 25-28."}
+        ],
         "upcomingEvents": [
           {"title": "Parent Meeting", "date": "2026-05-20"},
           {"title": "Field Trip", "date": "2026-05-22"}
@@ -33,15 +60,36 @@
         "section": "B",
         "rollNo": "07",
         "classTeacher": "Mr. Ruwan Fernando",
+        "dob": "2018-07-22",
         "attendance": "91%",
+        "monthlyAttendance": [
+          {"month": "Jan", "days": 19, "total": 21},
+          {"month": "Feb", "days": 18, "total": 20},
+          {"month": "Mar", "days": 20, "total": 22}
+        ],
         "feesStatus": "Pending",
+        "fees": [
+          {"month": "Jan", "amount": 5000, "status": "Paid", "date": "2026-01-10"},
+          {"month": "Feb", "amount": 5000, "status": "Paid", "date": "2026-02-08"},
+          {"month": "Mar", "amount": 5000, "status": "Pending"}
+        ],
+        "totalFees": 25000,
+        "feesPerMonth": 5000,
         "subjects": [
-          {"name": "Maths", "marks": "85/100"},
-          {"name": "English", "marks": "79/100"},
-          {"name": "Science", "marks": "90/100"}
+          {"name": "Maths", "teacher": "Mr. Ravi Kumar", "marks": "85/100", "yearlyMarks": [{"term": "Term 1", "marks": 82}, {"term": "Term 2", "marks": 85}, {"term": "Term 3", "marks": 87}]},
+          {"name": "English", "teacher": "Ms. Priya Sharma", "marks": "79/100", "yearlyMarks": [{"term": "Term 1", "marks": 76}, {"term": "Term 2", "marks": 79}, {"term": "Term 3", "marks": 81}]},
+          {"name": "Science", "teacher": "Dr. Vikram Singh", "marks": "90/100", "yearlyMarks": [{"term": "Term 1", "marks": 88}, {"term": "Term 2", "marks": 90}, {"term": "Term 3", "marks": 91}]},
+          {"name": "Social Studies", "teacher": "Mrs. Deepa Nair", "marks": "83/100", "yearlyMarks": [{"term": "Term 1", "marks": 80}, {"term": "Term 2", "marks": 83}, {"term": "Term 3", "marks": 85}]},
+          {"name": "Hindi", "teacher": "Mr. Suresh Kumar", "marks": "84/100", "yearlyMarks": [{"term": "Term 1", "marks": 81}, {"term": "Term 2", "marks": 84}, {"term": "Term 3", "marks": 86}]},
+          {"name": "Art & Craft", "teacher": "Ms. Neha Gupta", "marks": "88/100", "yearlyMarks": [{"term": "Term 1", "marks": 86}, {"term": "Term 2", "marks": 88}, {"term": "Term 3", "marks": 89}]}
         ],
         "homework": ["Practice spelling list", "Finish science lab sheet"],
         "remarks": "Shows good progress but needs to submit homework on time.",
+        "messages": [
+          {"from": "Mr. Ruwan Fernando", "date": "2026-05-13", "subject": "Homework submission", "text": "Noah needs to submit homework on time. Please ensure he completes it."},
+          {"from": "Mr. Ruwan Fernando", "date": "2026-05-08", "subject": "Science test", "text": "Great performance in the science test! Noah scored 90%."},
+          {"from": "School Admin", "date": "2026-05-07", "subject": "Sports day registration", "text": "Please register Noah for the sports day."}
+        ],
         "upcomingEvents": [
           {"title": "Sports Day", "date": "2026-05-28"},
           {"title": "Book Fair", "date": "2026-06-01"}

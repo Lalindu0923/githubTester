@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "children": [
+      {"name": "Emma Johnson", "grade": "1"},
+      {"name": "Noah Johnson", "grade": "4"}
+    ],
+    "notifications": ["Permission slip due Friday", "Parent-teacher meeting May 20"],
+    "upcomingEvents": [{"title": "Field Trip", "date": "2026-05-22"}]
+  },
+  {
+    "id": 2,
+    "name": "Michael Smith",
+    "children": [{"name": "Olivia Smith", "grade": "2"}],
+    "notifications": [],
+    "upcomingEvents": [{"title": "Book Fair", "date": "2026-06-01"}]
+  }
+]
