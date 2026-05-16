@@ -1,33 +1,33 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import '../styles/Navbar.css'
 
 function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
+        <NavLink to="/" className="navbar-logo">
           Admin Dashboard
-        </Link>
+        </NavLink>
         <ul className="nav-menu">
           <li className="nav-item">
-            <Link to="/" className="nav-link">
+            <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} end>
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/users" className="nav-link">
+            <NavLink to="/users" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
               Manage Users
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/analytics" className="nav-link">
+            <NavLink to="/analytics" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
               Analytics
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/settings" className="nav-link">
+            <NavLink to="/settings" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
               Settings
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

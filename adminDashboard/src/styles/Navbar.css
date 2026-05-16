@@ -35,6 +35,7 @@
   transition: color 0.3s;
 }
 
+.nav-link.active,
 .nav-link:hover {
   color: #ff6b6b;
 }
