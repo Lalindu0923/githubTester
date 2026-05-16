@@ -102,8 +102,6 @@ function Dashboard() {
         </div>
       )}
 
-      )}
-
       <div className="dashboard-content">
         <div className="card">
           <h2>System Overview</h2>
