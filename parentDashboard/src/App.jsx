@@ -163,7 +163,7 @@ export default function App() {
               <div className="overview-card">
                 <h3>Parent Information</h3>
                 <div className="detail-item-text">
-                  <span>Name</span>
+                  <span>Parent Name</span>
                   <strong>{parent.name}</strong>
                 </div>
                 <div className="detail-item-text">
@@ -189,16 +189,6 @@ export default function App() {
                   <span>State & Zip</span>
                   <strong>{parent.state} {parent.zipCode}</strong>
                 </div>
-              </div>
-            </div>
-            <div style={{marginTop: '24px'}}>
-              <h3>Children Overview</h3>
-              <div className="children-summary">
-                {parent.children.map((child, idx) => (
-                  <div key={idx} className="child-summary-card">
-                    <strong>{child.name}</strong> - Grade {child.grade} {child.section}, Attendance: {child.attendance}
-                  </div>
-                ))}
               </div>
             </div>
           </div>
@@ -302,29 +292,33 @@ export default function App() {
       </nav>
 
       <main className="container">
-        <section className="summary card">
-          <h3>My Children: {parent.children.length}</h3>
-          <p>Current Selection: <strong>{selectedStudent.name}</strong> (Grade {selectedStudent.grade})</p>
-        </section>
+        {activeTab !== 'Parent Profile' && (
+          <>
+            <section className="summary card">
+              <h3>My Children: {parent.children.length}</h3>
+              <p>Current Selection: <strong>{selectedStudent.name}</strong> (Grade {selectedStudent.grade})</p>
+            </section>
 
-        <section className="list">
-          {parent.children.map((student) => (
-            <button
-              key={student.id}
-              type="button"
-              className={`parent-card student-card ${selectedStudent?.id === student.id ? 'selected' : ''}`}
-              onClick={() => setSelectedStudentId(student.id)}
-            >
-              <div className="parent-info">
-                <div className="parent-name">{student.name}</div>
-                <div className="muted">
-                  Grade {student.grade} · {student.section} · Roll No. {student.rollNo}
-                </div>
-              </div>
-              <div className="btn">Select</div>
-            </button>
-          ))}
-        </section>
+            <section className="list">
+              {parent.children.map((student) => (
+                <button
+                  key={student.id}
+                  type="button"
+                  className={`parent-card student-card ${selectedStudent?.id === student.id ? 'selected' : ''}`}
+                  onClick={() => setSelectedStudentId(student.id)}
+                >
+                  <div className="parent-info">
+                    <div className="parent-name">{student.name}</div>
+                    <div className="muted">
+                      Grade {student.grade} · {student.section} · Roll No. {student.rollNo}
+                    </div>
+                  </div>
+                  <div className="btn">Select</div>
+                </button>
+              ))}
+            </section>
+          </>
+        )}
 
         <aside className="details">
           {renderTabContent()}
