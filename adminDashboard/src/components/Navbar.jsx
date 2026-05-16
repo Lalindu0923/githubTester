@@ -29,6 +29,9 @@ function Navbar() {
               Settings
             </NavLink>
           </li>
+          <li className="nav-item">
+            <button className="logout-btn" onClick={() => alert('Logout functionality coming soon')}>Logout</button>
+          </li>
         </ul>
       </div>
     </nav>
