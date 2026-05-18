@@ -5,8 +5,6 @@ import os
 FILE_NAME = "students.json"
 
 
-
-
 # Save students to file
 def save_students(students):
     with open(FILE_NAME, "w") as file:
@@ -40,6 +38,35 @@ def register_student():
     save_students(students)
 
     print("Student registered successfully!")
+
+
+# Load students
+def load_students():
+    if os.path.exists(FILE_NAME):
+        with open(FILE_NAME, "r") as file:
+            return json.load(file)
+    return {}
+
+
+# Login function
+def login_student():
+    students = load_students()
+
+    print("=== Student Login ===")
+
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+
+    if username in students and students[username]["password"] == password:
+        print("\nLogin Successful!")
+        print("Welcome,", students[username]["full_name"])
+        print("Student ID:", students[username]["student_id"])
+        print("Course:", students[username]["course"])
+    else:
+        print("Invalid username or password!")
+
+
+login_student()
 
 
 
