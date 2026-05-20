@@ -2,8 +2,59 @@ import '../styles/Dashboard.css'
 import { schoolsData } from '../data/schools'
 import { useState } from 'react'
 
+const BILLING_RATES = {
+  teacher: 18,
+  student: 6,
+}
+
+function formatBillingMonth(date = new Date()) {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    year: 'numeric',
+  }).format(date)
+}
+
+function createBillingReport(school) {
+  const teacherCount = school.teachers.length
+  const studentCount = school.students.length
+  const teacherUsage = teacherCount * BILLING_RATES.teacher
+  const studentUsage = studentCount * BILLING_RATES.student
+  const totalUsage = teacherUsage + studentUsage
+  const monthLabel = formatBillingMonth()
+
+  return [
+    'School Monthly Billing Report',
+    `School Name: ${school.name}`,
+    `Billing Month: ${monthLabel}`,
+    `Teachers: ${teacherCount}`,
+    `Students: ${studentCount}`,
+    `Teacher Usage Charges: $${teacherUsage.toFixed(2)}`,
+    `Student Usage Charges: $${studentUsage.toFixed(2)}`,
+    `Estimated Total Due: $${totalUsage.toFixed(2)}`,
+    '',
+    'Usage Summary',
+    'Item,Count,Rate,Charge',
+    `Teachers,${teacherCount},$${BILLING_RATES.teacher.toFixed(2)},$${teacherUsage.toFixed(2)}`,
+    `Students,${studentCount},$${BILLING_RATES.student.toFixed(2)},$${studentUsage.toFixed(2)}`,
+  ].join('\n')
+}
+
 function Dashboard() {
   const [selectedSchool, setSelectedSchool] = useState(null)
+
+  const handleDownloadBilling = (school) => {
+    const report = createBillingReport(school)
+    const fileName = `${school.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-monthly-billing.txt`
+    const blob = new Blob([report], { type: 'text/plain;charset=utf-8' })
+    const downloadUrl = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+
+    link.href = downloadUrl
+    link.download = fileName
+    link.click()
+
+    URL.revokeObjectURL(downloadUrl)
+  }
 
   return (
     <div className="dashboard">
@@ -54,6 +105,12 @@ function Dashboard() {
           <div className="detail-container">
             <button className="close-btn" onClick={() => setSelectedSchool(null)}>×</button>
             <h2>{selectedSchool.name}</h2>
+            <div className="billing-actions">
+              <button className="billing-download-btn" onClick={() => handleDownloadBilling(selectedSchool)}>
+                Download Monthly Billing
+              </button>
+              <p className="billing-note">Creates an estimated usage billing file for the selected school.</p>
+            </div>
             <p className="address"><strong>Address:</strong> {selectedSchool.address}</p>
             <p className="established"><strong>Established:</strong> {selectedSchool.established}</p>
 

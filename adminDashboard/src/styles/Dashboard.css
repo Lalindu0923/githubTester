@@ -248,6 +248,45 @@
   padding-bottom: 0.5rem;
 }
 
+.billing-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.25rem;
+}
+
+.billing-download-btn {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.billing-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(79, 70, 229, 0.26);
+  filter: brightness(1.02);
+}
+
+.billing-download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.18);
+}
+
+.billing-note {
+  margin: 0.3rem 0 0;
+  color: #6b7280;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  max-width: 28rem;
+}
+
 .address,
 .established {
   color: #666;
@@ -353,6 +392,15 @@
 
   .detail-container h2 {
     font-size: 1.5rem;
+  }
+
+  .billing-actions {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .billing-download-btn {
+    width: 100%;
   }
 
   .people-list {
