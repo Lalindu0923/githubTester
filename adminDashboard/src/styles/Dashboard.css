@@ -2,11 +2,26 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(79, 70, 229, 0.12), transparent 32%),
+    radial-gradient(circle at top right, rgba(255, 107, 107, 0.1), transparent 28%);
+  pointer-events: none;
+  animation: backgroundGlow 12s ease-in-out infinite alternate;
 }
 
 .dashboard-header {
   text-align: center;
   margin-bottom: 3rem;
+  position: relative;
+  animation: fadeUp 0.8s ease both;
 }
 
 .dashboard-header h1 {
@@ -22,6 +37,7 @@
 
 .schools-section {
   margin-bottom: 3rem;
+  position: relative;
 }
 
 .section-title {
@@ -43,12 +59,29 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-left: 4px solid #4f46e5;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: cardRise 0.75s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.school-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .school-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #4338ca;
+}
+
+.school-card:hover::after {
+  opacity: 1;
 }
 
 .school-card h3 {
@@ -80,6 +113,7 @@
   font-size: 2rem;
   font-weight: bold;
   color: #4f46e5;
+  animation: pulseCount 2.8s ease-in-out infinite;
 }
 
 .divider {
@@ -92,6 +126,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  position: relative;
 }
 
 .card {
@@ -99,8 +134,9 @@
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   border-left: 4px solid #ff6b6b;
+  animation: cardRise 0.75s ease both;
 }
 
 .card:hover {
@@ -166,6 +202,7 @@
   z-index: 1000;
   overflow-y: auto;
   padding: 2rem 0;
+  animation: overlayFadeIn 0.25s ease both;
 }
 
 .detail-container {
@@ -178,6 +215,7 @@
   overflow-y: auto;
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalRise 0.35s ease both;
 }
 
 .close-btn {
@@ -267,7 +305,7 @@
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .person-card:hover {
@@ -323,5 +361,113 @@
 
   .schools-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.schools-grid .school-card:nth-child(1),
+.dashboard-content .card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.schools-grid .school-card:nth-child(2),
+.dashboard-content .card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.schools-grid .school-card:nth-child(3),
+.dashboard-content .card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.schools-grid .school-card:nth-child(4),
+.dashboard-content .card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulseCount {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes backgroundGlow {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  to {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard::before,
+  .dashboard-header,
+  .school-card,
+  .card,
+  .stat-count,
+  .detailed-school-view,
+  .detail-container {
+    animation: none;
+  }
+
+  .school-card,
+  .card,
+  .person-card,
+  .close-btn {
+    transition: none;
   }
 }
