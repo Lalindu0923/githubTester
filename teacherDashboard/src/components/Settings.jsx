@@ -5,6 +5,8 @@ export default function Settings() {
   const [emailAlerts, setEmailAlerts] = useState(true)
   const [showGrades, setShowGrades] = useState(true)
   const [compactView, setCompactView] = useState(false)
+  const [notificationFrequency, setNotificationFrequency] = useState('Daily')
+  const [parentPortalAccess, setParentPortalAccess] = useState(true)
 
   return (
     <div className="settings-page">
@@ -41,6 +43,32 @@ export default function Settings() {
               onChange={(event) => setCompactView(event.target.checked)}
             />
             <span>Enable compact table view</span>
+          </label>
+        </div>
+      </section>
+
+      <section className="settings-card">
+        <h2>More Options</h2>
+        <div className="settings-options">
+          <label className="field-row">
+            <span>Notification frequency</span>
+            <select
+              value={notificationFrequency}
+              onChange={(event) => setNotificationFrequency(event.target.value)}
+            >
+              <option value="Daily">Daily</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Immediate">Immediate</option>
+            </select>
+          </label>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={parentPortalAccess}
+              onChange={(event) => setParentPortalAccess(event.target.checked)}
+            />
+            <span>Allow parent portal access</span>
           </label>
         </div>
       </section>

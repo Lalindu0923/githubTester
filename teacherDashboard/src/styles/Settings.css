@@ -46,8 +46,34 @@
   height: 16px;
 }
 
+.field-row {
+  display: grid;
+  gap: 0.45rem;
+  color: #34495e;
+}
+
+.field-row select {
+  width: 100%;
+  max-width: 260px;
+  border: 1px solid #d7dee6;
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  color: #2c3e50;
+  background: #fff;
+}
+
+.field-row select:focus {
+  outline: 2px solid rgba(52, 152, 219, 0.25);
+  border-color: #3498db;
+}
+
 @media (max-width: 768px) {
   .settings-page {
     padding: 1rem 15px;
+  }
+
+  .field-row select {
+    max-width: 100%;
   }
 }
