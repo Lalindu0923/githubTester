@@ -1,0 +1,575 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, #f8fbff 0%, #ffffff 55%, #f5f7ff 100%);
+}
+
+.dashboard::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(79, 70, 229, 0.24), transparent 0 18%, transparent 19%),
+    radial-gradient(circle at 80% 18%, rgba(255, 107, 107, 0.2), transparent 0 14%, transparent 15%),
+    radial-gradient(circle at 55% 78%, rgba(14, 165, 233, 0.14), transparent 0 16%, transparent 17%),
+    linear-gradient(135deg, rgba(79, 70, 229, 0.04), rgba(255, 107, 107, 0.03));
+  background-size: 100% 100%, 100% 100%, 100% 100%, 200% 200%;
+  pointer-events: none;
+  z-index: -2;
+  animation: backgroundDrift 18s ease-in-out infinite alternate, backgroundPan 24s linear infinite;
+}
+
+.dashboard::after {
+  content: '';
+  position: absolute;
+  width: 32rem;
+  height: 32rem;
+  top: -8rem;
+  right: -10rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18), rgba(99, 102, 241, 0.03) 45%, transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: -1;
+  animation: orbFloat 14s ease-in-out infinite alternate;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  animation: fadeUp 0.8s ease both;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.schools-section {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: #1a1a2e;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.schools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.school-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #4f46e5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: cardRise 0.75s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.school-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.school-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #4338ca;
+}
+
+.school-card:hover::after {
+  opacity: 1;
+}
+
+.school-card h3 {
+  color: #1a1a2e;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.login-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.stat-count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4f46e5;
+  animation: pulseCount 2.8s ease-in-out infinite;
+}
+
+.divider {
+  width: 1px;
+  height: 50px;
+  background-color: #e5e7eb;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  position: relative;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border-left: 4px solid #ff6b6b;
+  animation: cardRise 0.75s ease both;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  color: #666;
+}
+
+/* Detailed School View Styles */
+.school-info {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.info-item .label {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.info-item .value {
+  color: #666;
+}
+
+.click-hint {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 1rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.school-card {
+  cursor: pointer;
+}
+
+.detailed-school-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 2rem 0;
+  animation: overlayFadeIn 0.25s ease both;
+}
+
+.detail-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 900px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalRise 0.35s ease both;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.close-btn:hover {
+  background: #ff5252;
+}
+
+.detail-container h2 {
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  border-bottom: 3px solid #4f46e5;
+  padding-bottom: 0.5rem;
+}
+
+.billing-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.25rem;
+}
+
+.billing-download-btn {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.billing-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(79, 70, 229, 0.26);
+  filter: brightness(1.02);
+}
+
+.billing-download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.18);
+}
+
+.billing-note {
+  margin: 0.3rem 0 0;
+  color: #6b7280;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  max-width: 28rem;
+}
+
+.address,
+.established {
+  color: #666;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.principal-section {
+  background: #f0f4ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #4f46e5;
+}
+
+.principal-section h3 {
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+}
+
+.principal-details p {
+  margin: 0.7rem 0;
+  color: #333;
+}
+
+.principal-details a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.principal-details a:hover {
+  text-decoration: underline;
+}
+
+.teachers-section,
+.students-section {
+  margin-bottom: 2rem;
+}
+
+.teachers-section h3,
+.students-section h3 {
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.people-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.person-card {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.person-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #4f46e5;
+}
+
+.person-name {
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.person-subject,
+.person-grade {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.person-contact {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.person-contact a {
+  color: #4f46e5;
+  text-decoration: none;
+  display: inline-block;
+  word-break: break-all;
+}
+
+.person-contact a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .detail-container {
+    width: 98%;
+    padding: 1.5rem;
+  }
+
+  .detail-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .billing-actions {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .billing-download-btn {
+    width: 100%;
+  }
+
+  .people-list {
+    grid-template-columns: 1fr;
+  }
+
+  .schools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.schools-grid .school-card:nth-child(1),
+.dashboard-content .card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.schools-grid .school-card:nth-child(2),
+.dashboard-content .card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.schools-grid .school-card:nth-child(3),
+.dashboard-content .card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.schools-grid .school-card:nth-child(4),
+.dashboard-content .card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulseCount {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes backgroundGlow {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  to {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes backgroundDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(3%, 2%, 0) scale(1.06);
+  }
+}
+
+@keyframes backgroundPan {
+  0% {
+    background-position: 0% 0%, 100% 0%, 55% 100%, 0% 0%;
+  }
+
+  100% {
+    background-position: 8% 10%, 92% 8%, 48% 92%, 100% 100%;
+  }
+}
+
+@keyframes orbFloat {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.72;
+  }
+
+  to {
+    transform: translate3d(-4%, 6%, 0) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard::before,
+  .dashboard::after,
+  .dashboard-header,
+  .school-card,
+  .card,
+  .stat-count,
+  .detailed-school-view,
+  .detail-container {
+    animation: none;
+  }
+
+  .school-card,
+  .card,
+  .person-card,
+  .close-btn {
+    transition: none;
+  }
+}
